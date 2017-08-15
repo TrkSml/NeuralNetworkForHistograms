@@ -58,7 +58,7 @@ class NeuralNetwork:
 	
 	def visualize(self):
 		fig = plt.figure(figsize=(12, 12))
-		self.draw_neural_net(fig.gca(), .1, .9, .1, .9, [22, 11, 1])
+		self.draw_neural_net(fig.gca(), .1, .9, .1, .9, [111, 55, 1])
 		plt.show()
 
 	def draw_neural_net(self, ax, left, right, bottom, top, layer_sizes):
