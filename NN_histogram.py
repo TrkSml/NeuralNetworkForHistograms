@@ -1,9 +1,21 @@
 #!/usr/bin/env python
-"""Classifying histograms with a Neural Network.  """
+# coding: utf-8
+
+
+"""Classifying histograms with a Neural Network.  
+
+to explore : http://www.chioka.in/why-is-keras-running-so-slow/
+
+
+"""
 
 
 TEST_SIZE           =    10 
 POURCENTAGE_TRAIN   =    0.15
+
+HIDDEN_LAYER_SIZE = 55 
+NB_FEATURES       = 111
+
 
 from sklearn import cross_validation 
 import matplotlib.pyplot as plt
@@ -40,7 +52,7 @@ class NeuralNetwork:
 				
 	def build(self): 
 		Network = Sequential() 
-		Network.add(Dense(output_dim = 55, init='uniform', activation='relu', input_dim=111)) #first hidden layer
+		Network.add(Dense(output_dim = HIDDEN_LAYER_SIZE, init='uniform', activation='relu', input_dim=NB_FEATURES)) #first hidden layer
 		Network.add(Dense(output_dim = 1, init='uniform', activation='sigmoid')) #output neuron 
 		Network.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy']) #compile NN
 			#optimizer : how to tune wieghts
@@ -49,7 +61,7 @@ class NeuralNetwork:
 		return Network
 	
 	def fit_to_training(self):
-		self.NN.fit(self.X_train, self.Y_train, batch_size = 10, nb_epoch = 100 )
+		self.NN.fit(self.X_train, self.Y_train, batch_size = 10, nb_epoch = 10000 )
 		#self.NN.predict(np.transpose(self.simulate()))
 		self.visualize()
 
@@ -58,7 +70,7 @@ class NeuralNetwork:
 	
 	def visualize(self):
 		fig = plt.figure(figsize=(12, 12))
-		self.draw_neural_net(fig.gca(), .1, .9, .1, .9, [111, 55, 1])
+		self.draw_neural_net(fig.gca(), .1, .9, .1, .9, [20, 7, 1])
 		plt.show()
 
 	def draw_neural_net(self, ax, left, right, bottom, top, layer_sizes):
