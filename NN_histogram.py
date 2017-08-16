@@ -3,6 +3,14 @@
 
 
 """Classifying histograms with a Neural Network.  
+Histograms are represented as numpy arrays where each elem is number of Points in each [Yi, Yi + dy]. We have 111 Features and ont output, so it's a binary classification.
+
+
+Why Kears ? 
+	Sklearn NN classifier module is poor compared to what could be done with API like Theano. 
+	Keras is well documented and very user friendly. In fact, if you are already familiar with sklearn classifiers, you wont be disorientated.
+	Keras allows you to save models and load them. Models are stored as JSON and YAML files which is perfect. 
+	Keras exemples in officiel GitHub are amazing and very helpful. 
 
 to explore : http://www.chioka.in/why-is-keras-running-so-slow/
 
@@ -19,10 +27,10 @@ NB_FEATURES       = 111
 
 from sklearn import cross_validation 
 import matplotlib.pyplot as plt
-import keras
+import keras                                 #pip install keras in sudo    
 from keras.models import Sequential 
 from keras.layers import Dense
-from sklearn.model_selection import KFold
+#from sklearn.model_selection import KFold       
 import numpy as np
 import pandas as pd 
 import numpy as np
